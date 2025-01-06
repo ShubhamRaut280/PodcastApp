@@ -58,14 +58,19 @@ const Upload = () => {
                     setContent(text);
                     console.log('Extracted text from pdf:', text);
                     setGeneratingScript(true);
+
+                    setUploadTitle('Completed');
                 })
                 .catch((error) => {
                     console.error(`Failed to extract text from pdf: ${error}`);
                     setLoading(false);
+
+                    setUploadTitle(`Failed to extract text from pdf: ${error}`);
                 });
-            setUploadTitle('Completed');
         } else {
             console.log('No file selected or invalid file type');
+            setUploadTitle('No file selected or invalid file type');
+
         }
     };
 
